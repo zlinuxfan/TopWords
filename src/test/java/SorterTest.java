@@ -1,11 +1,14 @@
+import java.util.Arrays;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.Test;
 
 
 class SorterTest {
-    private final String[] words = {"word1", "word1", "word7", "word4", "word7", "word5", "word5", "word7"};
+    private final List<String> words = Arrays.asList(
+        "word1", "word1", "word7", "word4", "word7", "word5", "word5", "word7");
 
     @org.junit.jupiter.api.Test
     void getTop() {

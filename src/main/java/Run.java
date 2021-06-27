@@ -1,19 +1,30 @@
+import java.io.IOException;
+import java.util.LinkedList;
+import java.util.List;
 import java.util.Map;
 
 
 public class Run {
 
     public static void main(String[] args) {
-        String[] words = {"word1", "word1", "word7", "word2", "word3", "word4", "word7", "word7", "word5", "word5"};
-        //String[] words = {"word1"};
+        String url = "https://github.com/zlinuxfan/card/blob/master/README.md ";
+        List<String> words = new LinkedList<>();
+
+        try {
+            words = DownloadFileFromURL.parseString(url);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
 
         Sorter sorter = new Sorter(words);
-        printMap(sorter.getSortedMap());
+        printMap(sorter.getSortedMap(), 7);
     }
 
-    private static void printMap(Map<String, Status> map) {
+    private static void printMap(Map<String, Status> map, int minMeet) {
         for (Map.Entry<String, Status> entry : map.entrySet()) {
-            System.out.println(entry.getKey() + " ->" + entry.getValue().getCounter() + "; ");
+            if (entry.getValue().getCounter() > minMeet) {
+                System.out.println(entry.getKey() + " ->" + entry.getValue().getCounter() + "; ");
+            }
         }
     }
 }

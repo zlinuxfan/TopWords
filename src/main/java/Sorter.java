@@ -1,16 +1,17 @@
 import java.util.Comparator;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.NavigableSet;
 import java.util.TreeMap;
 
 public class Sorter implements SortedMap, Top{
-    private final String[] words;
+    private final List<String> words;
 
     private final Map<String, Status> wordsCounts = new HashMap<>();
 
-    public Sorter(final String[] words) {
-        if (words.length < 2) {
+    public Sorter(final List<String> words) {
+        if (words.size() < 2) {
             throw new IllegalArgumentException("You sent one or zero words");
         }
         this.words = words;
