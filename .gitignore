@@ -1,6 +1,6 @@
 /target/
 .mvn/wrapper/*
 
-*.properties
+###*.properties
 *.log
 
