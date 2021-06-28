@@ -5,16 +5,17 @@ import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Locale;
+import java.util.Properties;
 import java.util.Scanner;
 import java.util.stream.Collectors;
 import org.jsoup.Jsoup;
 
 public class DownloadFileFromURL {
 
-    public static List<String> parseString(String requestURL) throws IOException {
+    public static List<String> parseString(Properties properties) throws IOException {
         List<String> words = new LinkedList<>();
 
-        try (Scanner in = new Scanner(new URL(requestURL).openStream(),
+        try (Scanner in = new Scanner(new URL(properties.getProperty("url")).openStream(),
             StandardCharsets.UTF_8.toString())) {
             in.useDelimiter("\\A");
             String line;
@@ -22,7 +23,7 @@ public class DownloadFileFromURL {
             while (in.hasNextLine()) {
                 line = Jsoup.parse(in.nextLine()).text().toLowerCase(Locale.ROOT);
                 words.addAll(Arrays.stream(line.split("\\s+"))
-                    .filter(w -> w.length() >= 4)
+                    .filter(w -> w.length() >= Integer.parseInt(properties.getProperty("minCharsOfCount")))
                     .collect(Collectors.toList()));
             }
 
