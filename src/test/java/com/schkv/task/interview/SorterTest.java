@@ -1,8 +1,11 @@
+package com.schkv.task.interview;
+
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import static org.junit.jupiter.api.Assertions.*;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 
@@ -15,7 +18,7 @@ class SorterTest {
         Sorter sorter = new Sorter(words);
         String[] expected  = {"word4", "word1", "word5", "word7"};
 
-        assertArrayEquals( expected, sorter.getTop().toArray(new String[0]));
+        Assertions.assertArrayEquals( expected, sorter.getTop().toArray(new String[0]));
     }
 
     @Test
@@ -28,7 +31,7 @@ class SorterTest {
         expected.put("word4", new Status());
 
         for (Map.Entry<String, Status> entry : sorter.getSortedMap().entrySet()) {
-            assertEquals(entry.getValue(), expected.get(entry.getKey()));
+            Assertions.assertEquals(entry.getValue(), expected.get(entry.getKey()));
         }
     }
 

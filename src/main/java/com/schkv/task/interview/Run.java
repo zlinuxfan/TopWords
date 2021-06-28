@@ -1,3 +1,5 @@
+package com.schkv.task.interview;
+
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.LinkedList;

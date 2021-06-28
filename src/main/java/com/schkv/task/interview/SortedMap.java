@@ -1,3 +1,5 @@
+package com.schkv.task.interview;
+
 import java.util.TreeMap;
 
 public interface SortedMap {

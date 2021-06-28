@@ -1,3 +1,5 @@
+package com.schkv.task.interview;
+
 import java.util.Comparator;
 import java.util.HashMap;
 import java.util.List;
